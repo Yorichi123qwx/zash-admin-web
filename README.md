@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zash Admin Web
 
-## Getting Started
+Separate owner console for Zash Academy. It shares MongoDB only with the public web project and is deployed independently.
 
-First, run the development server:
+## Local setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local
+npm run dev -- --port 3001
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3001`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Set `MONGODB_URI`, `MONGODB_DB=zash`, and `OWNER_SESSION_SECRET` in `.env.local`. Owner login uses the existing `owners` documents created by Zash Admin.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Vercel deployment
 
-## Learn More
+Deploy this directory as a separate Vercel project. Add these environment variables:
 
-To learn more about Next.js, take a look at the following resources:
+- `MONGODB_URI`
+- `MONGODB_DB=zash`
+- `OWNER_SESSION_SECRET`
+- `PUBLIC_BASE_URL` set to the deployed owner-console domain
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Use a separate Vercel URL or custom domain such as `admin.zash-academy.com`. Do not add owner routes to the public Zash Academy deployment.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Checks
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```

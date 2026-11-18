@@ -1,26 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --canvas: #f6f7f9;
+  --surface: #ffffff;
+  --subtle: #eef1f5;
+  --ink: #14202b;
+  --muted: #5b6877;
+  --hairline: #e1e6ec;
+  --primary: #0e5a66;
+  --primary-hover: #0a4953;
+  --iris: #5b5a99;
+  --success: #2e7d5b;
+  --danger: #b4413c;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-subtle: var(--subtle);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-hairline: var(--hairline);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-iris: var(--iris);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+* { box-sizing: border-box; }
+html { background: var(--canvas); }
+body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--font-inter), sans-serif; line-height: 1.6; }
+button, input, select, textarea { font: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.shadow-card { box-shadow: 0 8px 24px rgb(20 32 43 / 6%); }
